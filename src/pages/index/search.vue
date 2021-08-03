@@ -4,130 +4,130 @@
       <div class="crumb">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>化妆品</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ bread }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
-      <div class="category">
-        <div class="list">
-          <a href="" class="second-menu">品牌：</a>
-          <ul>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
+      <!--      <div class="category">-->
+      <!--        <div class="list">-->
+      <!--          <a href="" class="second-menu">品牌：</a>-->
+      <!--          <ul>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
 
-          </ul>
-        </div>
-        <div class="line"></div>
-        <div class="list">
-          <a href="" class="second-menu">分类：</a>
-          <ul>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
-            <li>
-              <a href="">小米</a>
-            </li>
+      <!--          </ul>-->
+      <!--        </div>-->
+      <!--        <div class="line"></div>-->
+      <!--        <div class="list">-->
+      <!--          <a href="" class="second-menu">分类：</a>-->
+      <!--          <ul>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
+      <!--            <li>-->
+      <!--              <a href="">小米</a>-->
+      <!--            </li>-->
 
-          </ul>
-        </div>
-        <!--        <div class="line"></div>-->
-        <!--        <div class="list">-->
-        <!--          <a href="" class="second-menu">功能：</a>-->
-        <!--          <ul>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
-        <!--            <li>-->
-        <!--              <a href="">小米</a>-->
-        <!--            </li>-->
+      <!--          </ul>-->
+      <!--        </div>-->
+      <!--        &lt;!&ndash;        <div class="line"></div>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        <div class="list">&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <a href="" class="second-menu">功能：</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <ul>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
 
-        <!--          </ul>-->
-        <!--        </div>-->
-      </div>
+      <!--        &lt;!&ndash;          </ul>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+      <!--      </div>-->
       <div class="sort">
         <div class="left">
           <p :class="{'active':sortActive ==='default'}" @click="sortRes('default')">{{ status1 }}</p>
@@ -288,7 +288,8 @@ export default {
       sold_status: true,
       status1: '默认排序',
       status2: '销量升序',
-      status3: '价格升序'
+      status3: '价格升序',
+      bread: ''
     };
   },
   methods: {
@@ -306,13 +307,13 @@ export default {
       this.axios.get('/products/', {
         params
       }).then((res) => {
-        this.sortList = res.data.list.map(item => {
-          const temp = JSON.parse(item.goods[0]['params']);
+        this.productList = res.data.list.map(item => {
+          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
-            title: item.title + temp[Object.keys(temp)[1]],
-            cover: JSON.parse(item.goods[0]['images'])[1],
-            price: JSON.parse(item.goods[0].sold_price)
+            title: item.title,
+            cover: item.pic,
+            price: item.min_price,
           }
         });
       })
@@ -355,15 +356,16 @@ export default {
     getSortProduct() {
       this.axios.get('/goods/', {
         params: {
-          is_new: 1
+          pageSize: 5,
+          sold_num: 'sold_num'
         }
       }).then((res) => {
         this.sortList = res.data.list.map(item => {
           return {
             id: item.be_product.id,
             title: item.be_product.title,
-            cover: JSON.parse(item['images'])[1],
-            price: JSON.parse(item.sold_price)
+            cover: item.cover,
+            price: item.sold_price
           }
         });
       })
@@ -384,12 +386,12 @@ export default {
       }).then((res) => {
         this.total = res.data.total;
         this.productList = res.data.list.map(item => {
-          const temp = JSON.parse(item.goods[0]['params']);
+          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
-            title: item.title + temp[Object.keys(temp)[1]],
-            cover: JSON.parse(item.goods[0]['images'])[1],
-            price: JSON.parse(item.goods[0].sold_price),
+            title: item.title,
+            cover: item.pic,
+            price: item.min_price,
             // title: item.title,
             // cover: JSON.parse(item.images)['images'][0],
             // desc: item.desc.slice(0, 10),
@@ -408,12 +410,16 @@ export default {
         }
         this.productList = res.data.list.map(item => {
           // console.log(item)
-          const temp = JSON.parse(item.goods[0]['params']);
+          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
-            title: item.title + temp[Object.keys(temp)[1]],
-            cover: JSON.parse(item.goods[0]['images'])[0],
-            price: JSON.parse(item.goods[0].sold_price),
+            title: item.title,
+            cover: item.pic,
+            price: item.min_price,
+            // id: item.id,
+            // title: item.title + temp[Object.keys(temp)[1]],
+            // cover: JSON.parse(item.goods[0]['images'])[0],
+            // price: JSON.parse(item.goods[0].sold_price),
             // title: item.title,
             // cover: JSON.parse(item.images)['images'][0],
             // desc: item.desc.slice(0, 10),
@@ -425,18 +431,20 @@ export default {
     getCategoryProduct(key) {
       this.axios.get(`/products/?top_category=${key}`).then((res) => {
         this.total = res.data.total;
+        this.bread = res.data.list[0].category.name;
         this.productList = res.data.list.map(item => {
-          const temp = JSON.parse(item.goods[0]['params']);
+          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
-            title: item.title + temp[Object.keys(temp)[1]],
-            cover: JSON.parse(item.goods[0]['images'])[0],
-            price: JSON.parse(item.goods[0].sold_price),
+            title: item.title,
+            cover: item.pic,
+            price: item.min_price,
             // title: item.title,
             // cover: JSON.parse(item.images)['images'][0],
             // desc: item.desc.slice(0, 10),
             // price: JSON.stringify(item.params) === '[]' ? 0 : item.params[0]['shop_price'],
           }
+
         });
       })
     }
@@ -450,7 +458,7 @@ export default {
       this.getSearchProduct(flag.key)
       this.search_key = flag.key;
       this.is_search = true;
-      // this.search = flag.key;
+      this.bread = flag.key;
     } else if (Object.prototype.hasOwnProperty.call(flag, 'categoryId') && flag.categoryId !== "") {
       this.getCategoryProduct(flag.categoryId)
       this.is_category = true
@@ -539,10 +547,10 @@ export default {
               height: 24px;
               font-size: 14px;
               line-height: 24px;
-              background-color: aquamarine;
+              background-color: #ff6600;
 
               &.new-pro {
-                background-color: aquamarine;
+                background-color: #ff6600;
               }
 
               &.kill-pro {
@@ -685,7 +693,7 @@ export default {
         }
       }
 
-      height: 80px;
+      height: 30px;
       width: 1190px;
       display: flex;
       justify-content: space-between;
@@ -730,10 +738,10 @@ export default {
             height: 24px;
             font-size: 14px;
             line-height: 24px;
-            background-color: aquamarine;
+            background-color: #ff6600;
 
             &.new-pro {
-              background-color: aquamarine;
+              background-color: #ff6600;
             }
 
             &.kill-pro {
@@ -843,10 +851,10 @@ export default {
               height: 24px;
               font-size: 14px;
               line-height: 24px;
-              background-color: aquamarine;
+              background-color: #ff6600;
 
               &.new-pro {
-                background-color: aquamarine;
+                background-color: #ff6600;
               }
 
               &.kill-pro {

@@ -1,4 +1,6 @@
 ## 记录
+- 部署  https://blog.csdn.net/AnNanDu/article/details/105215592
+  
 
 -  js获取对象的key
 - https://blog.csdn.net/qq_37746973/article/details/80297150

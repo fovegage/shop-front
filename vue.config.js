@@ -1,11 +1,12 @@
 module.exports = {
-    outputDir: '../public',
+    // http://127.0.0.1:8082/api
+    outputDir: './public',
     devServer: {
         host: '127.0.0.1',
         port: 8080,
         proxy: {
             '/api': {
-                target: 'http://127.0.0.1:8000',
+                target: '//101.33.32.225:8002',
                 changeOrigin: true,
                 ws: true,
                 pathRewrite: {

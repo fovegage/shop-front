@@ -5,14 +5,15 @@
         <h3>订单中心</h3>
         <ul>
           <li :class="{'active': $route.path === '/orderList'}"><a href="/orderList">我的订单</a></li>
-          <li :class="{'active': $route.path === '/service'}"><a href="/service">售后列表</a></li>
+          <li :class="{'active': $route.path === '/collect'}"><a href="/collect">我的搜藏</a></li>
+          <!--          <li :class="{'active': $route.path === '/service'}"><a href="/service">售后列表</a></li>-->
           <!--          <li :class="{'active': $route.path === '/rate'}"><a href="/rate">评价管理</a></li>-->
         </ul>
       </div>
       <!--      <div class="user-center">-->
       <!--        <h3>用户中心</h3>-->
       <!--        <ul>-->
-      <!--          &lt;!&ndash;          <li :class="{'active': $route.path === '/sign'}"><a href="/sign">签到记录</a></li>&ndash;&gt;-->
+      <!--          <li :class="{'active': $route.path === '/sign'}"><a href="/sign">签到记录</a></li>-->
       <!--          <li :class="{'active': $route.path === '/collect'}"><a href="/collect">我的搜藏</a></li>-->
       <!--          <li :class="{'active': $route.path === '/history'}"><a href="/history">我的浏览</a></li>-->
       <!--        </ul>-->

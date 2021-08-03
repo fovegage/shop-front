@@ -43,7 +43,7 @@ Vue.use(VueLazyLoad, {
 // 基础接口配置
 Vue.config.productionTip = false
 axios.defaults.baseURL = env.baseURL;
-axios.defaults.timeout = 8000;
+axios.defaults.timeout = 10000;
 
 // request拦截器  不能在这里  这里就是全局了
 axios.interceptors.request.use(config => {
@@ -63,7 +63,6 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(function (response) {
     // console.log(response.data)
     let code = response.data.code;
-    // console.log(response.data, 11111111111)
     if (code === 200) {
         return response.data;
     } else if (code === 401) {

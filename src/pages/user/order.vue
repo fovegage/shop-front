@@ -46,23 +46,28 @@
 
                           <div class="left-img">
                             <a href=""><img
-                                :src="JSON.parse(good.goods.images)[0]"
+                                :src="good.goods.cover"
                                 alt=""></a>
                           </div>
 
-                          <a href="">{{ good.goods.classify }}</a>
-                          <span>{{ good.goods.shop_price }}元 × {{ good.nums }}</span>
+                          <a href="">{{ good.goods.params[0]["value"] }}</a>
+                          <span>{{ good.goods.sold_price }}元 × {{ good.nums }}</span>
 
                         </li>
                       </ul>
 
                     </div>
                     <div class="body-right">
-                      <div class="list" @click="goPay(order.order_sn, order.status)" v-if="closeStatus">{{
-                          order.status | judgeStatus
-                        }}
+                      <div v-if="order.status==='SUCCESS'">
+                        <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>
                       </div>
-                      <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>
+                      <div v-else>
+                        <div class="list" @click="goPay(order.order_sn, order.status)" v-if="closeStatus">{{
+                            order.status | judgeStatus
+                          }}
+                        </div>
+                        <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>
+                      </div>
                     </div>
                   </div>
 
@@ -139,7 +144,7 @@ export default {
       } else if (type === 'GOOD') {
         return '待收货'
       } else if (type === 'COMMENT') {
-        return '已完成'//'待评价'
+        return '已完成' //'待评价'
       } else if (type === 'SUCCESS') {
         return '已收货'
       } else {

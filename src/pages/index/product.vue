@@ -27,7 +27,9 @@
             <p class="item-info">
               {{ good.desc }}
             </p>
-            <div class="item-price">{{ soldPrice }}元<span class="del">{{ marketPrice }}元</span></div>
+            <div class="item-price">{{ soldPrice }}元
+              <!--              <span class="del">{{ marketPrice }}元</span>-->
+            </div>
             <div class="line"></div>
 
             <!--            <div class="item-version" v-for="(item, idx) in t2" :key="idx">-->
@@ -51,18 +53,31 @@
             <!--            </div>-->
 
 
+            <!--            <div class="item-version">-->
+            <!--              <h2>产品</h2>-->
+            <!--              <div class="info-list">-->
+            <!--                <div class="phone" :class="{'checked':version===item.id}" @click="getVersion(item.id)"-->
+            <!--                     v-for="item in good.params" :key="item.id">-->
+            <!--                  {{ getTitle(item.params) }}-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+
+            <!--            2021/08/02 对新的api进行适配-->
             <div class="item-version">
               <h2>产品</h2>
               <div class="info-list">
                 <div class="phone" :class="{'checked':version===item.id}" @click="getVersion(item.id)"
                      v-for="item in good.params" :key="item.id">
-                  {{ getTitle(item.params) }}
+                  <template v-for="k in item.params">
+                    {{ k["value"] }}
+                  </template>
                 </div>
               </div>
             </div>
 
             <!--            <template>-->
-            <!--              <div class="item-version" v-if="good.params.good_model">-->
+            <!--              <div class="item-version">-->
             <!--                <h2>规格</h2>-->
             <!--                <div class="info-list">-->
             <!--                  <div class="phone">6GB+64GB 全网通</div>-->
@@ -91,7 +106,7 @@
             </template>
             <div class="btn-submit">
               <template v-if="stockStatus === 0 ">
-<!--                <div class="btn-1" @click="goToOrder(version)"><a href="javascript:;" class="btn">立即购买</a></div>-->
+                <div class="btn-1" @click="goToOrder(version)"><a href="javascript:;" class="btn">立即购买</a></div>
                 <div class="btn-2" @click="addCart(version)"><a href="javascript:;" class="btn">加入购物车</a></div>
               </template>
               <template v-else>
@@ -100,14 +115,14 @@
                 <div class="btn-2" @click="notifyGood(good.id)"><a href="javascript:;" class="btn">到货通知</a></div>
               </template>
 
-<!--              <template v-if="this.$store.state.token">-->
-<!--                <template v-if="good.is_col">-->
-<!--                  <div class="btn-3"><a href="javascript:;" @click="collected" class="btn">已搜藏</a></div>-->
-<!--                </template>-->
-<!--                <template v-else>-->
-<!--                  <div class="btn-3" @click="collectProduct(good.id)"><a href="javascript:;" class="btn">搜藏</a></div>-->
-<!--                </template>-->
-<!--              </template>-->
+              <template v-if="this.$store.state.token">
+                <template v-if="good.is_col">
+                  <div class="btn-3"><a href="javascript:;" @click="collected" class="btn">已搜藏</a></div>
+                </template>
+                <template v-else>
+                  <div class="btn-3" @click="collectProduct(good.id)"><a href="javascript:;" class="btn">搜藏</a></div>
+                </template>
+              </template>
             </div>
           </div>
         </div>
@@ -115,6 +130,7 @@
       <div class="line"></div>
       <div class="desc">
         <div class="left">
+          <!--         to-do: 待添加功能-->
           <!--          <div class="brand">-->
           <!--            <div class="brand-title">{{ good.brandName }}</div>-->
           <!--            <a :href="'/brand/'+good.brandId" target="_blank"> <img v-lazy="good.brandLogo" alt=""></a>-->
@@ -142,7 +158,6 @@
         </div>
       </div>
 
-      <!--      <div class="line"></div>-->
     </div>
 
 
@@ -155,68 +170,7 @@
           <p> 2、尝试其他产品ID</p>
         </div>
       </div>
-      <!--      <div class="shop-guess">-->
-      <!--        <h3 class="cate-word">猜你喜欢</h3>-->
-      <!--        <div class="wrap-shop">-->
-      <!--          <div class="new-list">-->
-      <!--            <div class="shop-item">-->
-      <!--              &lt;!&ndash;              <span class="flag">新品</span>&ndash;&gt;-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              &lt;!&ndash;              <span class="flag">新品</span>&ndash;&gt;-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
+
 
     </div>
     <!--modal弹窗-->
@@ -300,8 +254,7 @@ export default {
       }
     },
     productName() {
-      console.log(this.version, 3333)
-      console.log(this.good.params.filter(item => item.id === this.version))
+      // console.log(this.good.params.filter(item => item.id === this.version), 11111111)
       try {
         return this.getTitle(this.good.params.filter(item => item.id === this.version)[0]['params'])
       } catch (err) {
@@ -320,8 +273,7 @@ export default {
 
     },
     stockStatus() {
-      console.log(this.version, 22222222)
-      console.log(this.good.params.filter(item => item.id === this.version))
+      // console.log(this.good.params.filter(item => item.id === this.version), 2222)
       // console.log(this.good.params.filter(item => item.id === this.version)[0])
       try {
         return this.good.params.filter(item => item.id === this.version)[0]['status'];
@@ -336,12 +288,15 @@ export default {
     getVersion(val) {
       this.version = val;
       this.axios.get(`/goods/${val}/`).then(res => {
-        this.sliderList = JSON.parse(res.data.images)
+        this.sliderList = [res.data.cover];
       })
     },
     getTitle(val) {
-      const key = Object.keys(val)[1];
-      return val[key]
+      console.log(val)
+      return val['value']
+
+      // const key = Object.keys(val)[1];
+      // return val[key]
 
     },
     swapGood(val) {
@@ -351,7 +306,8 @@ export default {
       // 提取key  使用key
       let data = [
         {"版本类型": "中国大陆", "存储容量": "16GB", "套餐类型": "套餐一", "机身颜色": "黑色"},
-        {"版本类型": "中国大陆", "存储容量": "32GB", "套餐类型": "套餐二", "机身颜色": "红色"}
+        {"版本类型": "中国大陆", "存储容量": "32GB", "套餐类型": "套餐二", "机身颜色": "红色"},
+
       ]
       let a = {
         '存储类型': ['16GB', '32GB'],
@@ -388,22 +344,28 @@ export default {
       return a;
     },
     getSortProduct() {
-      this.axios.get('/goods/', {
+      this.axios.get('/products/', {
         params: {
           is_new: 1
         }
       }).then((res) => {
         this.sortList = res.data.list.map(item => {
+          // const temp = JSON.parse(item.params);
           return {
             id: item.id,
-            title: item.be_product.title,
-            cover: JSON.parse(item['images'])[1],
-            price: JSON.parse(item.sold_price)
+            title: item.title,
+            cover: item.pic,
+            price: item.min_price
+            // id: item.be_product.id,
+            // title: item.be_product.title + temp[Object.keys(temp)[1]],
+            // cover: JSON.parse(item['images'])[1],
+            // price: JSON.parse(item.sold_price)
           }
         });
       })
     },
     goToOrder() {
+      //  直接
     },
     outStcok(id) {
       console.log(id);
@@ -483,7 +445,7 @@ export default {
               // paramArr.push(temp)
               return {
                 'id': gitem.id,
-                'params': JSON.parse(gitem.params),
+                'params': gitem.params,
                 'status': gitem.is_sold,
                 'sold_price': gitem.sold_price
               }
@@ -495,7 +457,8 @@ export default {
             sn: item.sn,
             desc: '',
             is_col: 1,
-            detail: item.goods[0].detail,
+            detail: item.detail,
+            // marketPrice: `${item.min_price} ~ ${item.max_price}`,
             marketPrice: item.goods.map(item1 => {
               return [item1.market_price].sort()
             }),
@@ -505,9 +468,10 @@ export default {
 
           }
         })[0];
-        console.log(this.good)
+        // console.log(this.good)
         // this.sliderList = JSON.parse(res.data.images)['images'];
-        this.sliderList = JSON.parse(res.data.goods[0]['images']);
+        // this.sliderList = res.data.images.split(',');
+        this.sliderList = [res.data.pic];
       })
 
     },

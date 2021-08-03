@@ -31,7 +31,7 @@
                 <div class="detail-info">
                   <ul>
                     <li v-for="(good,index) in orderDetail.goods" :key="index">
-                      <img v-lazy="good.goods.cover"/>{{ good.goods.classify }}
+                      <img v-lazy="good.goods.cover"/>&nbsp;&nbsp;&nbsp;{{ good.goods.params[0]["value"] }}
                     </li>
                   </ul>
                 </div>

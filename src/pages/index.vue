@@ -48,6 +48,7 @@
                 {{ this.$store.state.username.slice(7, 11) }}</p>
               <a href="/orderList" class="login-button">我的订单</a>
               <a href="/message" class="login-button">消息中心</a>
+
             </template>
             <template v-else>
               <p class="username">Hi！你好</p>
@@ -65,25 +66,24 @@
       <!--公告-->
       <div class="notice">
         <span>公告</span><img src="~@/static/imgs/notice.png" alt="">
-        <p>欢迎来到JapanHui</p>
+        <p>{{ notice }}</p>
       </div>
 
       <!--            第二层 推荐-->
-      <!--      <div class="shop-recommend">-->
-      <!--        <div class="recom-left">-->
-      <!--          <img src="~@/static/imgs/rec.png" alt="人气推荐">-->
-      <!--        </div>-->
-      <!--        <div class="recom-right">-->
-      <!--          <div class="recom-list" v-for="item in hotList" :key="item.id">-->
-      <!--            <div class="recom-img">-->
-      <!--              <a :href="'/product/'+item.id" target="_blank">-->
-      <!--                <img v-lazy="item.cover" :alt="item.title">-->
-      <!--              </a>-->
-      <!--            </div>-->
-      <!--          </div>-->
-
-      <!--        </div>-->
-      <!--      </div>-->
+      <div class="shop-recommend">
+        <div class="recom-left">
+          <img src="~@/static/imgs/rec.png" alt="人气推荐">
+        </div>
+        <div class="recom-right">
+          <div class="recom-list" v-for="item in hotList.slice(0,4)" :key="item.id">
+            <div class="recom-img">
+              <a :href="'/product/'+item.id" target="_blank">
+                <img v-lazy="item.cover" :alt="item.title">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
       <!--      第三层 新品推荐-->
@@ -108,12 +108,12 @@
                 <p class="price">{{ item.price }}元</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-      <!--      第四层-->
-      <div class="shop-category" v-for="(reccom, idx1) in reccomList" :key="idx1">
+
+      <!--      第四层  -->
+      <div class="shop-category" v-for="(reccom, idx1) in recommendList" :key="idx1">
         <h3 class="cate-word">{{ reccom.category }}</h3>
         <div class="wrap-category">
           <div class="brandlist">
@@ -121,7 +121,6 @@
               <!--              :href="'/brand/'+brand.id" target="_blank"-->
               <a href="javascript:;"> <img v-lazy="brand.image" :alt="brand.en_name"></a>
             </div>
-
           </div>
           <div class="category-list">
             <div class="shop-item" v-for="(product,idx3) in reccom.products" :key="idx3">
@@ -134,13 +133,11 @@
                 <a :href="'/product/'+product.id" target="_blank">
                   <h3 class="title">{{ product.title.slice(0, 35) }}<span v-if="product.title.length > 38">...</span>
                   </h3>
-
                 </a>
                 <p class="desc">{{ product.desc }}</p>
                 <p class="price" @click="addCart()">{{ product.price }}元</p>
               </div>
             </div>
-
           </div>
         </div>
         <!--        <div class="ads">-->
@@ -154,7 +151,7 @@
         <h3 class="cate-word">热卖爆品</h3>
         <div class="wrap-shop">
           <div class="new-list">
-            <div class="shop-item" v-for="(hot, idx) in hotList" :key="idx">
+            <div class="shop-item" v-for="(hot, idx) in sortList" :key="idx">
               <span class="flag kill-pro">热卖</span>
               <div class="item-img">
                 <a :href="'/product/'+hot.id" target="_blank"> <img v-lazy="hot.cover" :alt="hot.title"></a>
@@ -164,11 +161,11 @@
                 <p class="price">{{ hot.price }}元</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
+
     <!--    emit 进行组件之间的传递值-->
     <modal
         title="提示"
@@ -216,36 +213,62 @@ export default {
       //http://mi.futurefe.com/imgs/slider/slide-1.jpg
       sliderList: [
         {
-          id: '1',
-          img: 'https://kaola-haitao.oss.kaolacdn.com/40db1aa0-31d1-4ab0-ab3b-81cc802279edT2106031354_1920_506.jpg?x-oss-process=image/resize,w_1920/quality,q_90'
+          id: '',
+          img: ''
         }
       ],
       newList: [],
       hotList: [],
-      reccomList: [],
-      sortList: []
+      recommendList: [],
+      sortList: [],
+      notice: ""
     }
   },
   mounted() {
-    this.getReccom();
+    this.getRecommend();
     this.getHotProduct();
     this.getNewProduct();
-    // this.getSortProduct();
+    this.getGoodSold();
+    this.getInfo();
+    this.getCarousel();
   },
   methods: {
-    getReccom() {
+    getCarousel() {
+      this.axios.get('/managements/ad/').then((res) => {
+        this.sliderList = res.data.list.map(item => {
+          return {
+            id: item.id,
+            img: item.pic
+          }
+
+        });
+        // console.log(this.sliderList)
+      })
+    },
+    getInfo() {
+      this.axios.get('/managements/setting/1/').then((res) => {
+        this.notice = res.data.notice;
+      })
+    },
+    // 取的是设置  brand的
+    getRecommend() {
       this.axios.get('/recommends/').then((res) => {
-        this.reccomList = res.data.list.map(item => {
+        this.recommendList = res.data.list.map(item => {
           return {
             id: item.id,
             category: item.name,
-            products: item.banner_product.map(item1 => {
-              const temp = JSON.parse(item1.goods[0]['params']);
+            products: item.banner_product.map(product_item => {
+              // const temp = JSON.parse(item1.goods[0]['params']);
               return {
-                id: item1.id,
-                title: item1.title + temp[Object.keys(temp)[1]],
-                image: JSON.parse(item1.goods[0]['images'])[1],
-                price: JSON.parse(item1.goods[0].sold_price)
+                id: product_item.id,
+                title: product_item.title,
+                image: product_item.pic,
+                price: product_item.min_price
+
+                // id: item1.id,
+                // title: item1.title + temp[Object.keys(temp)[1]],
+                // image: JSON.parse(item1.goods[0]['images'])[1],
+                // price: JSON.parse(item1.goods[0].sold_price)
                 // desc: item1.desc.slice(0, 10),
                 // price: JSON.stringify(item1.params) === '[]' ? 0 : item1.params[0]['shop_price']
               }
@@ -266,34 +289,63 @@ export default {
       let routeData = this.$router.resolve({path: '/cart'});
       window.open(routeData.href, '_blank');
     },
-    getHotProduct() {
+    getGoodSold() {
       this.axios.get('/goods/', {
         params: {
-          is_hot: 1
+          pageSize: 5,
+          sold_num: 'sold_num'
+        }
+      }).then((res) => {
+        this.sortList = res.data.list.map(
+            item => {
+              return {
+                id: item.be_product.id,
+                title: item.be_product.title,
+                cover: item.cover,
+                price: item.sold_price
+              }
+            }
+        )
+      })
+    },
+    getHotProduct() {
+      this.axios.get('/products/', {
+        params: {
+          is_recommend: 1
         }
       }).then((res) => {
         this.hotList = res.data.list.map(item => {
+          // const temp = JSON.parse(item.params);
           return {
-            id: item.be_product.id,
-            title: item.be_product.title,
-            cover: JSON.parse(item['images'])[1],
-            price: JSON.parse(item.sold_price)
+            id: item.id,
+            title: item.title,
+            cover: item.pic,
+            price: item.min_price
+            // id: item.be_product.id,
+            // title: item.be_product.title + temp[Object.keys(temp)[1]],
+            // cover: JSON.parse(item['images'])[1],
+            // price: JSON.parse(item.sold_price)
           }
         });
       })
     },
     getNewProduct() {
-      this.axios.get('/goods/', {
+      this.axios.get('/products/', {
         params: {
           is_new: 1
         }
       }).then((res) => {
         this.newList = res.data.list.map(item => {
+          // const temp = JSON.parse(item.params);
           return {
-            id: item.be_product.id,
-            title: item.be_product.title,
-            cover: JSON.parse(item['images'])[1],
-            price: JSON.parse(item.sold_price)
+            id: item.id,
+            title: item.title,
+            cover: item.pic,
+            price: item.min_price
+            // id: item.be_product.id,
+            // title: item.be_product.title + temp[Object.keys(temp)[1]],
+            // cover: JSON.parse(item['images'])[1],
+            // price: JSON.parse(item.sold_price)
             // cover: JSON.parse(item.images)['images'][0],
             // shop_price: JSON.stringify(item.params) === '[]' ? 0 : item.params[0]['shop_price'],
             // desc: item.desc
@@ -492,6 +544,7 @@ export default {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          justify-content: space-around;
           align-items: center;
           height: 262px;
           width: 235px;
@@ -520,6 +573,7 @@ export default {
           }
 
           .login-button {
+            height: 40px;
             width: 118px;
             text-align: center;
             margin: 5px auto 15px auto;

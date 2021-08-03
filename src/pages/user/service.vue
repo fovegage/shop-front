@@ -57,11 +57,17 @@
 
                     </div>
                     <div class="body-right">
+                      <!--                      <div v-if="order.status==='SUCCESS'">-->
+                      <!--                        <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>-->
+                      <!--                      </div>-->
+
                       <div class="list" @click="goPay(order.order_sn, order.status)" v-if="closeStatus">{{
                           order.status | judgeStatus
                         }}
                       </div>
                       <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>
+
+
                     </div>
                   </div>
 

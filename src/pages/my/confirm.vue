@@ -55,11 +55,11 @@
                           <use xlink:href="#icon-del"></use>
                         </svg>
                       </a>
-                      <a href="javascript:;" @click="editAddress()">
-                        <svg class="icon icon-edit">
-                          <use xlink:href="#icon-edit"></use>
-                        </svg>
-                      </a>
+                      <!--                      <a href="javascript:;" @click="editAddress()">-->
+                      <!--                        <svg class="icon icon-edit">-->
+                      <!--                          <use xlink:href="#icon-edit"></use>-->
+                      <!--                        </svg>-->
+                      <!--                      </a>-->
                     </div>
                   </div>
                   <div class="addr-add" @click="addAddress()">
@@ -74,18 +74,18 @@
                   <li v-for="(cart, idx) in cartSelect" :key="idx">
                     <div class="good-name">
                       <img
-                          :src="JSON.parse(cart.goods.images)[0]">
-                      <span>{{ getTitle(JSON.parse(cart.goods.params)) }}</span>
+                          :src="cart.goods.cover">
+                      <span>{{ getTitle(cart.goods.params) }}</span>
                     </div>
                     <div class="good-price">{{ cart.goods.sold_price }}元 x {{ cart.nums }}</div>
                     <div class="good-total">{{ cart.goods.sold_price * cart.nums }}元</div>
                   </li>
                 </ul>
               </div>
-              <div class="item-shipping">
-                <h2>配送方式</h2>
-                <span>运费按每千克10元执行</span>
-              </div>
+              <!--              <div class="item-shipping">-->
+              <!--                <h2>配送方式</h2>-->
+              <!--                <span>国内快递</span>-->
+              <!--              </div>-->
               <div class="item-note">
                 <h2>订单留言</h2>
                 <el-input
@@ -145,34 +145,29 @@
             <input type="text" class="input" placeholder="手机号" v-model="checkedItem.receiverMobile">
           </div>
           <div class="item">
-            <select name="province" v-model="checkedItem.receiverProvince">
+            <select name="province" @change='getValue' v-model="checkedItem.receiverProvince"
+                    @click="switchCity('province')">
               <option selected hidden disabled value="">省份</option>
-              <option value="北京">北京</option>
-              <option value="天津">天津</option>
-              <option value="河北">河北</option>
+              <option :value="item" v-for="item in provinceList" :key="item.id">{{ item.region_name }}
+              </option>
             </select>
-            <select name="city" v-model="checkedItem.receiverCity">
+            <!--            @click="switchCity('city')"-->
+            <select name="city" @change='getCountryValue' v-model="checkedItem.receiverCity">
               <option selected hidden disabled value="">地市</option>
-              <option value="北京">北京</option>
-              <option value="天津">天津</option>
-              <option value="河北">石家庄</option>
+              <option :value="item" v-for="item in cityList" :key="item.id">{{ item.region_name }}
+              </option>
             </select>
-            <select name="district" v-model="checkedItem.receiverDistrict">
+            <select name="district" @change='getLastValue' v-model="checkedItem.receiverDistrict">
               <option selected hidden disabled value="">县区</option>
-              <option value="北京">昌平区</option>
-              <option value="天津">海淀区</option>
-              <option value="河北">东城区</option>
-              <option value="天津">西城区</option>
-              <option value="河北">顺义区</option>
-              <option value="天津">房山区</option>
+              <option :value="item" v-for="item in countryList" :key="item.id">{{ item.region_name }}</option>
             </select>
           </div>
           <div class="item">
             <textarea name="street" v-model="checkedItem.receiverAddress" placeholder="无需重复填写省市区，小于75个字"></textarea>
           </div>
-          <div class="item">
-            <input type="text" class="input" placeholder="邮编" v-model="checkedItem.receiverZip">
-          </div>
+          <!--          <div class="item">-->
+          <!--            <input type="text" class="input" placeholder="邮编" v-model="checkedItem.receiverZip">-->
+          <!--          </div>-->
         </div>
       </template>
     </modal>
@@ -193,6 +188,7 @@
 import MyHeader from "../../components/MyHeader";
 import Modal from '../../components/Modal'
 import {Message} from "element-ui";
+// import axios from "axios";
 
 export default {
   name: "confirm",
@@ -202,8 +198,14 @@ export default {
   },
   data() {
     return {
+      provinceList: [],
+      cityList: [],
+      countryList: [],
       note: '',
       addressId: '',
+      pro: "",
+      ci: '',
+      dis: '',
       isSelect: '',
       dialogTitle: '',
       cartSelect: [],
@@ -263,11 +265,76 @@ export default {
 
   },
   methods: {
+    getLastValue: function () {
+      this.dis = this.checkedItem.receiverDistrict.region_name
+    },
+    getCountryValue: function () {
+      this.ci = this.checkedItem.receiverCity.region_name
+
+      console.log('您选择了', this.checkedItem.receiverCity, this.checkedItem.receiverCity.id, 22)
+      // http://127.0.0.1:8000/region/?region_parent_id=1000000
+      this.axios.get('/region/', {
+        params: {
+          region_parent_id: this.checkedItem.receiverCity.id
+        }
+      }).then(res => {
+        this.countryList = res.data.list.map(item => {
+          return {
+            id: item.region_id,
+            region_name: item.region_name,
+            // region_code: item.region_id
+          }
+        })
+      })
+
+    },
+    getValue: function () {
+      console.log('您选择了', this.checkedItem.receiverProvince)
+      this.pro = this.checkedItem.receiverProvince.region_name
+      // http://127.0.0.1:8000/region/?region_parent_id=1000000
+      this.axios.get('/region/', {
+        params: {
+          region_parent_id: this.checkedItem.receiverProvince.id
+        }
+      }).then(res => {
+        this.cityList = res.data.list.map(item => {
+          return {
+            id: item.region_id,
+            region_name: item.region_name,
+            // region_code: item.region_id
+          }
+        })
+      })
+
+    },
+    switchCity(type) {
+      console.log(type)
+      if (type === 'province') {
+        // http://127.0.0.1:8000/region/?region_level=1
+
+        this.axios.get('/region/', {
+          params: {
+            region_level: 1
+          }
+        }).then(res => {
+          this.provinceList = res.data.list.map(item => {
+            return {
+              id: item.region_id,
+              region_name: item.region_name,
+              // region_code: item.region_parent_id
+            }
+          })
+        })
+
+        // console.log(this.provinceList)
+      }
+    },
     getTitle(val) {
-      console.log(val)
-      const key = Object.keys(val)[1]
-      console.log(key)
-      return val[key]
+      return val[0]['value']
+      // console.log(val)
+      // const key = Object.keys(val)[1]
+      // console.log(key)
+      // return val[key]
 
     },
     goSettlement() {
@@ -311,15 +378,11 @@ export default {
 
 
     },
-    delAddress() {
-      this.showDelModal = true;
-    },
+
     submitAddress() {
       let flag = this.dialogTitle
       if (flag === '编辑地址') {
-        return 1
-      } else {
-        this.axios.post('/address/', {
+        this.axios.patch(`/address/${this.addressId}`, {
           "province": this.checkedItem.receiverProvince,
           "city": this.checkedItem.receiverCity,
           "district": this.checkedItem.receiverDistrict,
@@ -329,16 +392,55 @@ export default {
           "stamp": this.checkedItem.receiverZip,
           "is_select": false
         }).then(() => {
-          Message.success('新增地址成功')
+          // Message.success('地址编辑成功')
+          this.showEditModal = false;
+          this.getAddress();
+
+        })
+
+      } else if (flag === '删除地址') {
+        this.axios.delete(`/address/${this.addressId}`).then(() => {
+          Message.success('地址删除成功')
+          this.getAddress();
+          this.showEditModal = false;
+
+
+        })
+      } else {
+        this.axios.post('/address/', {
+          "province": this.pro,
+          "city": this.ci,
+          "district": this.dis,
+          "address": this.checkedItem.receiverAddress,
+          "signer_name": this.checkedItem.receiverName,
+          "signer_mobile": this.checkedItem.receiverMobile,
+          "stamp": this.checkedItem.receiverZip,
+          "is_select": false
+        }).then(() => {
+          Message.success('地址添加成功')
           this.showEditModal = false;
           this.getAddress();
         })
       }
 
     },
+    delAddress() {
+      this.dialogTitle = '删除地址'
+      this.showDelModal = true;
+    },
     editAddress() {
+      console.log('编辑', this.addressId, `/address/${this.addressId}`)
       this.dialogTitle = '编辑地址'
       this.showEditModal = true;
+      this.axios.get(`/address/${this.addressId}/`).then((res) => {
+        console.log(res)
+        this.checkedItem.receiverProvince = res.data.province;
+        this.checkedItem.receiverCity = res.data.city;
+        this.checkedItem.receiverDistrict = res.data.district;
+        this.checkedItem.receiverName = res.data.signer_name;
+        this.checkedItem.receiverMobile = res.data.signer_mobile;
+        this.checkedItem.receiverAddress = res.data.address;
+      })
     },
     addAddress() {
       this.dialogTitle = '添加地址'
@@ -629,7 +731,7 @@ export default {
     }
 
     textarea {
-      height: 62px;
+      height: 80px;
       width: 100%;
       padding: 13px 15px;
       box-sizing: border-box;

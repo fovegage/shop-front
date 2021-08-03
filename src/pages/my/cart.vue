@@ -19,9 +19,9 @@
                       @click="updateSelect(cart.goods.id,cart.is_select)"></span>
               </div>
               <div class="item-name">
-                <img :src="JSON.parse(cart.goods.images)[0]"
+                <img :src="cart.goods.cover"
                      alt="">
-                <span>{{ getTitle(JSON.parse(cart.goods.params)) }}</span>
+                <span>{{ getTitle(cart.goods.params) }}</span>
               </div>
               <div class="item-price">{{ cart.goods.sold_price }}</div>
               <div class="item-num">
@@ -88,10 +88,11 @@ export default {
   },
   methods: {
     getTitle(val) {
-      console.log(val)
-      const key = Object.keys(val)[1]
-      console.log(key)
-      return val[key]
+      return val[0]['value']
+      // console.log(val)
+      // const key = Object.keys(val)[1]
+      // console.log(key)
+      // return val[key]
 
     },
     // this.$cookie.get('token')

@@ -62,9 +62,9 @@
                 <ul>
                   <li v-for="(good, idx) in orderDetail.goods" :key="idx">
                     <div class="list-img"><img
-                        :src="JSON.parse(good.goods.images)[0]" :alt="good.goods.classify">
+                        :src="good.goods.cover" :alt="good.goods.classify">
                     </div>
-                    <p class="list-title">{{ getTitle(JSON.parse(good.goods.params)) }}</p>
+                    <p class="list-title">{{ getTitle(good.goods.params) }}</p>
                     <p class="list-price">{{ good.goods.sold_price }}元 × {{ good.nums }}</p>
                   </li>
                   <div class="line"></div>
@@ -221,10 +221,11 @@ export default {
       })
     },
     getTitle(val) {
-      console.log(val)
-      const key = Object.keys(val)[1]
-      console.log(key)
-      return val[key]
+      return val[0]['value']
+      // console.log(val)
+      // const key = Object.keys(val)[1]
+      // console.log(key)
+      // return val[key]
 
     },
     goPay(orderSn, status) {

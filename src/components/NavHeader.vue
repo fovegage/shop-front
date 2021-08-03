@@ -48,7 +48,7 @@
     <div class="searchBar">
       <div class="container">
         <div class="header-logo">
-          <a href="/index.html"><img src="~@/static/imgs/logo.png" alt="JapanHui"></a>
+          <a href="/index.html"><img :src="logo" :alt="name"></a>
         </div>
         <div class="shop-search">
           <div class="wrapper">
@@ -73,7 +73,7 @@
       <div class="container">
         <div class="cate-left">
           <ul>
-            <li><a href="javascript:;">全部分类</a></li>
+            <li><a href="/index.html">全部分类</a></li>
             <li><a href="/index.html">首页</a></li>
             <!--            js数组过滤  item必须加-->
             <li v-for="item in category.filter(item => item.is_banner===1)" :key="item.id">
@@ -110,6 +110,12 @@ export default {
       let routeData = this.$router.resolve({path: '/cart'});
       window.open(routeData.href, '_blank');
     },
+    getInfo() {
+      this.axios.get('/managements/setting/1/').then((res) => {
+        this.logo = res.data.logo;
+        this.name = res.data.name;
+      })
+    },
     goToSearch(key) {
       if (key === '') {
         Message.warning('输入为空，请重新输入');
@@ -128,11 +134,14 @@ export default {
     }
   },
   mounted() {
-
+    this.getInfo();
   },
   data() {
     return {
-      searchKey: ''
+      searchKey: '',
+      name: '',
+      logo: '',
+      notice:''
     }
   },
   props: ['category'],
