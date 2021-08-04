@@ -36,10 +36,10 @@
                   </ul>
                 </div>
               </div>
-              <div class="item">
-                <div class="detail-title">发票信息：</div>
-                <div class="detail-info">电子发票 个人</div>
-              </div>
+              <!--              <div class="item">-->
+              <!--                <div class="detail-title">发票信息：</div>-->
+              <!--                <div class="detail-info">电子发票 个人</div>-->
+              <!--              </div>-->
             </div>
           </div>
           <div class="item-pay">

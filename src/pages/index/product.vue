@@ -115,14 +115,14 @@
                 <div class="btn-2" @click="notifyGood(good.id)"><a href="javascript:;" class="btn">到货通知</a></div>
               </template>
 
-              <template v-if="this.$store.state.token">
-                <template v-if="good.is_col">
-                  <div class="btn-3"><a href="javascript:;" @click="collected" class="btn">已搜藏</a></div>
-                </template>
-                <template v-else>
-                  <div class="btn-3" @click="collectProduct(good.id)"><a href="javascript:;" class="btn">搜藏</a></div>
-                </template>
-              </template>
+              <!--              <template v-if="this.$store.state.token">-->
+              <!--                <template v-if="good.is_col">-->
+              <!--                  <div class="btn-3"><a href="javascript:;" @click="collected" class="btn">已搜藏</a></div>-->
+              <!--                </template>-->
+              <!--                <template v-else>-->
+              <!--                  <div class="btn-3" @click="collectProduct(good.id)"><a href="javascript:;" class="btn">搜藏</a></div>-->
+              <!--                </template>-->
+              <!--              </template>-->
             </div>
           </div>
         </div>
@@ -364,8 +364,17 @@ export default {
         });
       })
     },
-    goToOrder() {
+    goToOrder(version) {
+      // version 是商品id
+      if (version === '') {
+        Message.warning('请选择产品或规格')
+        return
+      }
+      console.log(version, this.num)
       //  直接
+      let routeData = this.$router.resolve({name: 'confirm', query: {'gid': version, 'num': this.num}});
+      window.open(routeData.href);
+      // this.$router.push({path: "confirm", params: {'gid': version, 'num': this.num}})
     },
     outStcok(id) {
       console.log(id);
@@ -456,7 +465,7 @@ export default {
             title: item.title,
             sn: item.sn,
             desc: '',
-            is_col: 1,
+            is_col: item.is_col,
             detail: item.detail,
             // marketPrice: `${item.min_price} ~ ${item.max_price}`,
             marketPrice: item.goods.map(item1 => {

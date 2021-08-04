@@ -21,7 +21,7 @@
               <h3 :class="{'checked':orderSelect==='PAYING'}" @click="filterOrder('PAYING')">待付款</h3>
               <h3 :class="{'checked':orderSelect==='DELIVERY'}" @click="filterOrder('DELIVERY')">待发货</h3>
               <h3 :class="{'checked':orderSelect==='GOOD'}" @click="filterOrder('GOOD')">待收货</h3>
-              <!--              <h3 :class="{'checked':orderSelect==='COMMENT'}" @click="filterOrder('COMMENT')">待评价</h3>-->
+              <h3 :class="{'checked':orderSelect==='COMMENT'}" @click="filterOrder('COMMENT')">待评价</h3>
 
             </div>
             <div class="line"></div>
@@ -61,6 +61,7 @@
                       <div v-if="order.status==='SUCCESS'">
                         <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>
                       </div>
+
                       <div v-else>
                         <div class="list" @click="goPay(order.order_sn, order.status)" v-if="closeStatus">{{
                             order.status | judgeStatus
@@ -69,6 +70,7 @@
                         <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>
                       </div>
                     </div>
+
                   </div>
 
                 </li>
@@ -129,7 +131,7 @@ export default {
       } else if (type === 'GOOD') {
         return '查看物流'
       } else if (type === 'COMMENT') {
-        return '交易完成' // '马上评价'
+        return '马上评价' // '马上评价'
       } else if (type === 'SUCCESS') {
         return '申请退货'
       } else {

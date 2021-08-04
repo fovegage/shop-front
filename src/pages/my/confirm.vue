@@ -73,8 +73,7 @@
                 <ul>
                   <li v-for="(cart, idx) in cartSelect" :key="idx">
                     <div class="good-name">
-                      <img
-                          :src="cart.goods.cover">
+                      <img :src="cart.goods.cover">
                       <span>{{ getTitle(cart.goods.params) }}</span>
                     </div>
                     <div class="good-price">{{ cart.goods.sold_price }}元 x {{ cart.nums }}</div>
@@ -260,18 +259,41 @@ export default {
     }
   },
   mounted() {
-    this.getCart();
-    this.getAddress();
+    var flag = this.$route.query.gid;
+    if (flag) {
+      this.getAddress();
+      this.getGood(flag);
+    } else {
+      this.getCart();
+      this.getAddress();
+    }
 
   },
   methods: {
+    getGood(gid) {
+      this.axios.get(`/goods/${gid}/`).then((res) => {
+        console.log(res)
+        this.cartSelect = [
+          {
+            goods: {
+              cover: res.data.cover,
+              params: res.data.params,
+              sold_price: res.data.sold_price,
+              weight: res.data.weight
+
+            },
+            nums: Number(this.$route.query.num)
+          }
+        ]
+      })
+    },
     getLastValue: function () {
       this.dis = this.checkedItem.receiverDistrict.region_name
     },
     getCountryValue: function () {
       this.ci = this.checkedItem.receiverCity.region_name
 
-      console.log('您选择了', this.checkedItem.receiverCity, this.checkedItem.receiverCity.id, 22)
+      // console.log('您选择了', this.checkedItem.receiverCity, this.checkedItem.receiverCity.id, 22)
       // http://127.0.0.1:8000/region/?region_parent_id=1000000
       this.axios.get('/region/', {
         params: {
@@ -289,7 +311,7 @@ export default {
 
     },
     getValue: function () {
-      console.log('您选择了', this.checkedItem.receiverProvince)
+      // console.log('您选择了', this.checkedItem.receiverProvince)
       this.pro = this.checkedItem.receiverProvince.region_name
       // http://127.0.0.1:8000/region/?region_parent_id=1000000
       this.axios.get('/region/', {
@@ -301,17 +323,14 @@ export default {
           return {
             id: item.region_id,
             region_name: item.region_name,
-            // region_code: item.region_id
           }
         })
       })
 
     },
     switchCity(type) {
-      console.log(type)
       if (type === 'province') {
         // http://127.0.0.1:8000/region/?region_level=1
-
         this.axios.get('/region/', {
           params: {
             region_level: 1
@@ -321,46 +340,63 @@ export default {
             return {
               id: item.region_id,
               region_name: item.region_name,
-              // region_code: item.region_parent_id
             }
           })
         })
-
-        // console.log(this.provinceList)
       }
     },
     getTitle(val) {
       return val[0]['value']
-      // console.log(val)
-      // const key = Object.keys(val)[1]
-      // console.log(key)
-      // return val[key]
-
     },
     goSettlement() {
-      //{{ address.receiverProvince }} {{ address.receiverCity }}
-      // {{ address.receiverDistrict }} {{ address.receiverAddress }}
-      // let selectAddress = this.allAddress.map(item => item.id === this.addressId);
       if (this.addressId === '') {
         Message.warning('请选择收货地址或者添加新地址')
         return;
       }
-      this.axios.post('/orders/', {
-        post_script: this.note || '默认',
-        address: this.isSelect.receiverProvince + this.isSelect.receiverCity + this.isSelect.receiverDistrict + this.isSelect.receiverAddress,
-        signer_name: this.isSelect.receiverName,
-        singer_mobile: this.isSelect.receiverMobile,
-        flag: 1
-      }).then((res) => {
-        let orderSn = res.data.order_sn;
-        // post传输
-        this.$router.push({
-          path: 'pay',
-          query: {
-            orderSn: orderSn
-          }
+
+      var flag = this.$route.query.gid;
+      if (flag) {
+        this.axios.post('/once/', {
+          post_script: this.note || '默认',
+          address: this.isSelect.receiverProvince + this.isSelect.receiverCity + this.isSelect.receiverDistrict + this.isSelect.receiverAddress,
+          signer_name: this.isSelect.receiverName,
+          singer_mobile: this.isSelect.receiverMobile,
+          num: this.$route.query.num,
+          gid: this.$route.query.gid
+        }).then((res) => {
+          console.log(res)
+          let orderSn = res.data.order_sn;
+          // post传输
+          this.$router.push({
+            path: 'pay',
+            query: {
+              orderSn: orderSn
+            }
+          })
         })
-      })
+      }
+          //{{ address.receiverProvince }} {{ address.receiverCity }}
+          // {{ address.receiverDistrict }} {{ address.receiverAddress }}
+      // let selectAddress = this.allAddress.map(item => item.id === this.addressId);
+
+      else {
+        this.axios.post('/orders/', {
+          post_script: this.note || '默认',
+          address: this.isSelect.receiverProvince + this.isSelect.receiverCity + this.isSelect.receiverDistrict + this.isSelect.receiverAddress,
+          signer_name: this.isSelect.receiverName,
+          singer_mobile: this.isSelect.receiverMobile,
+          flag: 1
+        }).then((res) => {
+          let orderSn = res.data.order_sn;
+          // post传输
+          this.$router.push({
+            path: 'pay',
+            query: {
+              orderSn: orderSn
+            }
+          })
+        })
+      }
     },
     selectAddress(id) {
       // console.log(id)

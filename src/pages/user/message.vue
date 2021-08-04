@@ -15,7 +15,7 @@
               <h1>消息中心</h1>
             </div>
             <div class="message-category">
-              <h3 :class="{'checked':messageSelect==='SYSTEM'}" @click="filterMessage('SYSTEM')">系统公告</h3>
+              <!--              <h3 :class="{'checked':messageSelect==='SYSTEM'}" @click="filterMessage('SYSTEM')">系统公告</h3>-->
               <h3 :class="{'checked':messageSelect==='EXPRESS'}" @click="filterMessage('EXPRESS')">物流动态</h3>
             </div>
             <div class="line"></div>
@@ -57,13 +57,13 @@ export default {
   },
   data() {
     return {
-      messageSelect: 'SYSTEM',
+      messageSelect: 'EXPRESS',
       notices: []
     }
   }, methods: {
     filterMessage(type) {
       this.messageSelect = type;
-      if (type === 'SYSTEM') {
+      if (type === 'EXPRESS') {
         this.getNotice();
       } else {
         this.notices = [];

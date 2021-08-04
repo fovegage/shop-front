@@ -19,9 +19,9 @@
               <h3 :class="{'checked':orderSelect===''}" @click="filterOrder('')">所有售后</h3>
               <h3 :class="{'checked':orderSelect==='SUCCESS'}" @click="filterOrder('SUCCESS')">售后完成</h3>
               <h3 :class="{'checked':orderSelect==='PAYING'}" @click="filterOrder('PAYING')">买家退货</h3>
-              <h3 :class="{'checked':orderSelect==='DELIVERY'}" @click="filterOrder('DELIVERY')">卖家质检</h3>
+              <h3 :class="{'checked':orderSelect==='DELIVERY'}" @click="filterOrder('DELIVERY')">卖家收货</h3>
               <h3 :class="{'checked':orderSelect==='GOOD'}" @click="filterOrder('GOOD')">售后拒绝</h3>
-              <h3 :class="{'checked':orderSelect==='COMMENT'}" @click="filterOrder('COMMENT')">卖家返货</h3>
+              <!--              <h3 :class="{'checked':orderSelect==='COMMENT'}" @click="filterOrder('COMMENT')">卖家返货</h3>-->
             </div>
             <div class="line"></div>
             <div class="order-list">
