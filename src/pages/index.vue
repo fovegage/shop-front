@@ -211,12 +211,7 @@ export default {
         }
       },
       //http://mi.futurefe.com/imgs/slider/slide-1.jpg
-      sliderList: [
-        {
-          id: '',
-          img: ''
-        }
-      ],
+      sliderList: [],
       newList: [],
       hotList: [],
       recommendList: [],
@@ -240,9 +235,7 @@ export default {
             id: item.id,
             img: item.pic
           }
-
         });
-        // console.log(this.sliderList)
       })
     },
     getInfo() {
