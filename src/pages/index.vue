@@ -31,7 +31,7 @@
         <div class="swiper-box">
           <swiper :options="swiperOptions">
             <swiper-slide v-for="(item , idx) in sliderList" :key="idx">
-              <a v-bind:href="'/#/product/'+item.id">
+              <a v-bind:href="'/activity/'+item.id" target="_blank">
                 <img :src="item.img">
               </a>
             </swiper-slide>
@@ -42,12 +42,12 @@
         </div>
         <div class="intro-right">
           <div class="user">
-            <a href=""><img src="~@/static/imgs/avatar.png" alt=""></a>
+            <a href="/profile"><img src="~@/static/imgs/avatar.png" alt=""></a>
             <template v-if="this.$store.state.username">
               <p class="username">{{ this.$store.state.username.slice(0, 3) }} ***
                 {{ this.$store.state.username.slice(7, 11) }}</p>
               <a href="/orderList" class="login-button">我的订单</a>
-              <a href="/message" class="login-button">消息中心</a>
+              <a href="/collect" class="login-button">搜藏中心</a>
 
             </template>
             <template v-else>
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <!--公告-->
+      <!--公告  to-do 上下-->
       <div class="notice">
         <span>公告</span><img src="~@/static/imgs/notice.png" alt="">
         <p>{{ notice }}</p>
@@ -118,8 +118,7 @@
         <div class="wrap-category">
           <div class="brandlist">
             <div class="brand" v-for="(brand,idx2) in reccom.brands" :key="idx2">
-              <!--              :href="'/brand/'+brand.id" target="_blank"-->
-              <a href="javascript:;"> <img v-lazy="brand.image" :alt="brand.en_name"></a>
+              <a :href="'/search?brandId='+brand.id" target="_blank"> <img v-lazy="brand.image" :alt="brand.en_name"></a>
             </div>
           </div>
           <div class="category-list">
@@ -227,6 +226,12 @@ export default {
     this.getInfo();
     this.getCarousel();
   },
+  // created() {
+  //   this.axios.get('/managements/setting/1/').then((res) => {
+  //     document.title = res.data.name;
+  //   })
+  //
+  // },
   methods: {
     getCarousel() {
       this.axios.get('/managements/ad/').then((res) => {
@@ -241,6 +246,7 @@ export default {
     getInfo() {
       this.axios.get('/managements/setting/1/').then((res) => {
         this.notice = res.data.notice;
+        document.title = res.data.name;
       })
     },
     // 取的是设置  brand的

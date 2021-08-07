@@ -176,6 +176,9 @@ export default {
   mounted() {
     this.getOrderDetail();
   },
+  created() {
+    document.title = '订单详情 - JapanHui';
+  },
   computed: {
 
     totalPrice() {

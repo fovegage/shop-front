@@ -4,7 +4,10 @@
 
 <script>
 export default {
-  name: "sign"
+  name: "sign",
+  created() {
+    document.title = '用户签到 - JapanHui';
+  },
 }
 </script>
 

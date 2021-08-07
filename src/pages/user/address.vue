@@ -4,7 +4,10 @@
 
 <script>
 export default {
-  name: "address"
+  name: "address",
+  created() {
+    document.title = '地址管理 - JapanHui';
+  },
 }
 </script>
 

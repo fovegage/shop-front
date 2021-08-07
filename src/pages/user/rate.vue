@@ -7,7 +7,10 @@
 
 <script>
 export default {
-  name: "rate"
+  name: "rate",
+  created() {
+    document.title = '订单评价 - JapanHui';
+  },
 }
 </script>
 

@@ -50,6 +50,9 @@ export default {
   mounted() {
     this.historyProduct();
   },
+  created() {
+    document.title = '历史记录 - JapanHui';
+  },
   filters: {
     formatCreateTime(time) {
       let date = new Date(time);

@@ -93,6 +93,9 @@ export default {
     }
 
   },
+  created() {
+    document.title = '订单支付 - JapanHui';
+  },
   mounted() {
     let orderSn = this.$route.query.orderSn;
     // console.log(orderSn)

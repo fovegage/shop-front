@@ -18,10 +18,12 @@
                 <span class="checkbox" :class="{'checked':cart.is_select}"
                       @click="updateSelect(cart.goods.id,cart.is_select)"></span>
               </div>
-              <div class="item-name">
-                <img :src="cart.goods.cover"
-                     alt="">
-                <span>{{ getTitle(cart.goods.params) }}</span>
+              <div class="item-name" style="cursor: pointer">
+                <a :href='"/product/"+cart.goods.be_product'>
+                  <img :src="cart.goods.cover"
+                       alt="">
+                  <span style="color: black">{{ getTitle(cart.goods.params) }}</span>
+                </a>
               </div>
               <div class="item-price">{{ cart.goods.sold_price }}</div>
               <div class="item-num">
@@ -85,6 +87,9 @@ export default {
       })
       return sum
     }
+  },
+  created() {
+    document.title = '购物车 - JapanHui';
   },
   methods: {
     getTitle(val) {

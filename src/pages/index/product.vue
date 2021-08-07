@@ -115,14 +115,14 @@
                 <div class="btn-2" @click="notifyGood(good.id)"><a href="javascript:;" class="btn">到货通知</a></div>
               </template>
 
-              <!--              <template v-if="this.$store.state.token">-->
-              <!--                <template v-if="good.is_col">-->
-              <!--                  <div class="btn-3"><a href="javascript:;" @click="collected" class="btn">已搜藏</a></div>-->
-              <!--                </template>-->
-              <!--                <template v-else>-->
-              <!--                  <div class="btn-3" @click="collectProduct(good.id)"><a href="javascript:;" class="btn">搜藏</a></div>-->
-              <!--                </template>-->
-              <!--              </template>-->
+              <template v-if="this.$store.state.token">
+                <template v-if="good.is_col">
+                  <div class="btn-3"><a href="javascript:;" @click="collected" class="btn">已搜藏</a></div>
+                </template>
+                <template v-else>
+                  <div class="btn-3" @click="collectProduct(good.id)"><a href="javascript:;" class="btn">搜藏</a></div>
+                </template>
+              </template>
             </div>
           </div>
         </div>
@@ -481,6 +481,7 @@ export default {
         // this.sliderList = JSON.parse(res.data.images)['images'];
         // this.sliderList = res.data.images.split(',');
         this.sliderList = [res.data.pic];
+        document.title = res.data.title + ' - JapanHui'
       })
 
     },

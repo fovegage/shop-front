@@ -18,8 +18,8 @@
             <div class="order-category">
               <h3 :class="{'checked':orderSelect===''}" @click="filterOrder('')">所有售后</h3>
               <h3 :class="{'checked':orderSelect==='SUCCESS'}" @click="filterOrder('SUCCESS')">售后完成</h3>
-              <h3 :class="{'checked':orderSelect==='PAYING'}" @click="filterOrder('PAYING')">买家退货</h3>
-              <h3 :class="{'checked':orderSelect==='DELIVERY'}" @click="filterOrder('DELIVERY')">卖家收货</h3>
+              <!--              <h3 :class="{'checked':orderSelect==='PAYING'}" @click="filterOrder('PAYING')">买家退货</h3>-->
+              <!--              <h3 :class="{'checked':orderSelect==='DELIVERY'}" @click="filterOrder('DELIVERY')">卖家收货</h3>-->
               <h3 :class="{'checked':orderSelect==='GOOD'}" @click="filterOrder('GOOD')">售后拒绝</h3>
               <!--              <h3 :class="{'checked':orderSelect==='COMMENT'}" @click="filterOrder('COMMENT')">卖家返货</h3>-->
             </div>
@@ -178,6 +178,9 @@ export default {
         this.total = res.data.total;
       })
     },
+    created() {
+      document.title = '售后列表 - JapanHui';
+    },
     filterOrder(status) {
       this.orderSelect = status;
       this.axios.get('/orders/', {
@@ -185,9 +188,11 @@ export default {
           pageSize: this.pageSize,
           status: status
         }
-      }).then((res) => {
-        this.orderList = res.data.list;
-        this.total = res.data.total;
+      }).then(() => {
+        // this.orderList = res.data.list;
+        // this.total = res.data.total;
+        this.orderList = [];
+        this.total = 0;
       })
     },
     getOrderList() {
@@ -195,9 +200,11 @@ export default {
         params: {
           pageSize: this.pageSize
         }
-      }).then((res) => {
-        this.orderList = res.data.list;
-        this.total = res.data.total;
+      }).then(() => {
+        // this.orderList = res.data.list;
+        // this.total = res.data.total;
+        this.orderList = [];
+        this.total = 0;
       })
     },
     orderDetail(orderSn) {

@@ -61,6 +61,9 @@ export default {
       collectList: []
     }
   },
+  created() {
+    document.title = '我的收藏 - JapanHui';
+  },
   methods: {
     collectProduct() {
       this.axios.get('/collect/').then((res) => {
@@ -68,9 +71,9 @@ export default {
           return {
             id: item.product.id,
             title: item.product.title,
-            cover: JSON.parse(item.product.images)['images'][0],
-            desc: item.product.desc.slice(0, 10),
-            price: JSON.stringify(item.product.params) === '[]' ? 0 : item.product.params[0]['shop_price'],
+            cover: item.product.pic,
+            // desc: item.product.desc.slice(0, 10),
+            price: item.product.min_price
           }
         });
         console.log(this.collectList)

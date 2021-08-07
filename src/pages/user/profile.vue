@@ -110,6 +110,9 @@ export default {
   mounted() {
     this.getUserInfo();
   },
+  created() {
+    document.title = '账户设置 - JapanHui';
+  },
   methods: {
     getUserInfo() {
       let uid = this.$cookie.get('uid');

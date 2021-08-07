@@ -43,14 +43,13 @@
                     <div class="body-left">
                       <ul>
                         <li v-for="(good,idx) in order.goods" :key="idx">
-
                           <div class="left-img">
                             <a href=""><img
                                 :src="good.goods.cover"
                                 alt=""></a>
                           </div>
 
-                          <a href="">{{ good.goods.params[0]["value"] }}</a>
+                          <a :href='"/product/"+good.goods.be_product.id'>{{ good.goods.params[0]["value"] }}</a>
                           <span>{{ good.goods.sold_price }}元 × {{ good.nums }}</span>
 
                         </li>
@@ -58,11 +57,11 @@
 
                     </div>
                     <div class="body-right">
-                      <div v-if="order.status==='SUCCESS'">
-                        <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>
-                      </div>
+                      <!--                      <div v-if="order.status==='SUCCESS'">-->
+                      <!--                        <div class="list" @click="orderDetail(order.order_sn)">订单详情</div>-->
+                      <!--                      </div>-->
 
-                      <div v-else>
+                      <div>
                         <div class="list" @click="goPay(order.order_sn, order.status)" v-if="closeStatus">{{
                             order.status | judgeStatus
                           }}
@@ -121,7 +120,9 @@ export default {
 
     }
   },
-
+  created() {
+    document.title = '我的订单 - JapanHui';
+  },
   filters: {
     judgeStatus(type) {
       if (type === 'PAYING') {

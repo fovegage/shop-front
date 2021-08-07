@@ -77,7 +77,7 @@
             <li><a href="/index.html">首页</a></li>
             <!--            js数组过滤  item必须加-->
             <li v-for="item in category.filter(item => item.is_banner===1)" :key="item.id">
-              <a :href="'/search?categoryId='+item.id" target="_blank">{{ item.name }}</a>
+              <a :href="'/search?categoryId='+item.id" target="_blank">{{ item.display_name }}</a>
             </li>
           </ul>
         </div>

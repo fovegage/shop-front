@@ -7,151 +7,37 @@
           <el-breadcrumb-item>{{ bread }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
-      <!--      <div class="category">-->
-      <!--        <div class="list">-->
-      <!--          <a href="" class="second-menu">品牌：</a>-->
-      <!--          <ul>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
+      <div class="brand" v-if="is_brand">
+        <div class="left">
+          <img :src="brandInfo.image" alt="">
+        </div>
+        <div class="right">
+          <h2>{{ brandInfo.zh_name }}（{{ brandInfo.en_name }}）</h2>
+          <p>{{ brandInfo.desc }}</p>
+        </div>
 
-      <!--          </ul>-->
-      <!--        </div>-->
-      <!--        <div class="line"></div>-->
-      <!--        <div class="list">-->
-      <!--          <a href="" class="second-menu">分类：</a>-->
-      <!--          <ul>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-      <!--            <li>-->
-      <!--              <a href="">小米</a>-->
-      <!--            </li>-->
-
-      <!--          </ul>-->
-      <!--        </div>-->
-      <!--        &lt;!&ndash;        <div class="line"></div>&ndash;&gt;-->
-      <!--        &lt;!&ndash;        <div class="list">&ndash;&gt;-->
-      <!--        &lt;!&ndash;          <a href="" class="second-menu">功能：</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;          <ul>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            <li>&ndash;&gt;-->
-      <!--        &lt;!&ndash;              <a href="">小米</a>&ndash;&gt;-->
-      <!--        &lt;!&ndash;            </li>&ndash;&gt;-->
-
-      <!--        &lt;!&ndash;          </ul>&ndash;&gt;-->
-      <!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-      <!--      </div>-->
+      </div>
       <div class="sort">
         <div class="left">
           <p :class="{'active':sortActive ==='default'}" @click="sortRes('default')">{{ status1 }}</p>
           <p :class="{'active':sortActive ==='price'}" @click="sortRes('price')">{{ status3 }}</p>
           <p :class="{'active':sortActive ==='num'}" @click="sortRes('num')">{{ status2 }}</p>
         </div>
-        <!--        <div class="right">-->
-        <!--          <el-radio v-model="radio" label="1">仅看促销</el-radio>-->
-        <!--          <el-radio v-model="radio" label="2">仅看新品</el-radio>-->
-        <!--          <el-radio v-model="radio" label="3">仅看有货</el-radio>-->
-        <!--        </div>-->
+        <div class="right">
+          <el-radio v-model="radio" label="1">仅看推荐</el-radio>
+          <el-radio v-model="radio" label="2">仅看新品</el-radio>
+          <el-radio v-model="radio" label="3">仅看有货</el-radio>
+        </div>
       </div>
       <div class="good-list">
         <div class="new-list">
           <div class="shop-item" v-for="( product, idx) in productList" :key="idx">
-            <!--            <span class="flag">新品</span>-->
+            <span class="flag" v-if="product.is_new">新品</span>
             <div class="item-img">
               <a :href="'/product/'+product.id" target="_blank"><img v-lazy="product.cover" :alt="product.title"></a>
             </div>
             <div class="item-info">
               <h3 class="title">{{ product.title.slice(0, 35) }}<span v-if="product.title.length > 38">...</span></h3>
-
-              <!--              <h3 class="title">{{ product.title }}</h3>-->
-              <!--              <p class="desc">{{ product.desc.slice(0, 10) }}</p>-->
               <p class="price">{{ product.price }}元</p>
             </div>
           </div>
@@ -199,68 +85,7 @@
           <p> 2、尝试其他关键词</p>
         </div>
       </div>
-      <!--      <div class="shop-guess">-->
-      <!--        <h3 class="cate-word">猜你喜欢</h3>-->
-      <!--        <div class="wrap-shop">-->
-      <!--          <div class="new-list">-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--            <div class="shop-item">-->
-      <!--              <span class="flag">新品</span>-->
-      <!--              <div class="item-img">-->
-      <!--                <img src="~@/static/imgs/detail/phone-1.jpg" alt="">-->
-      <!--              </div>-->
-      <!--              <div class="item-info">-->
-      <!--                <h3 class="title">小米11</h3>-->
-      <!--                <p class="desc">6400万全场景四摄</p>-->
-      <!--                <p class="price">1399元</p>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
+
 
     </div>
   </div>
@@ -289,8 +114,13 @@ export default {
       status1: '默认排序',
       status2: '销量升序',
       status3: '价格升序',
-      bread: ''
+      bread: '',
+      bid: 0,
+      brandInfo: Object
     };
+  },
+  created() {
+    document.title = '搜索 - JapanHui'
   },
   methods: {
     requestProduct(val) {
@@ -308,7 +138,6 @@ export default {
         params
       }).then((res) => {
         this.productList = res.data.list.map(item => {
-          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
             title: item.title,
@@ -386,16 +215,11 @@ export default {
       }).then((res) => {
         this.total = res.data.total;
         this.productList = res.data.list.map(item => {
-          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
             title: item.title,
             cover: item.pic,
             price: item.min_price,
-            // title: item.title,
-            // cover: JSON.parse(item.images)['images'][0],
-            // desc: item.desc.slice(0, 10),
-            // price: JSON.stringify(item.params) === '[]' ? 0 : item.params[0]['shop_price'],
           }
         });
       })
@@ -409,40 +233,30 @@ export default {
           return;
         }
         this.productList = res.data.list.map(item => {
-          // console.log(item)
-          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
             title: item.title,
             cover: item.pic,
             price: item.min_price,
-            // id: item.id,
-            // title: item.title + temp[Object.keys(temp)[1]],
-            // cover: JSON.parse(item.goods[0]['images'])[0],
-            // price: JSON.parse(item.goods[0].sold_price),
-            // title: item.title,
-            // cover: JSON.parse(item.images)['images'][0],
-            // desc: item.desc.slice(0, 10),
-            // price: JSON.stringify(item.params) === '[]' ? 0 : item.params[0]['shop_price'],
           }
         });
       })
     },
-    getCategoryProduct(key) {
-      this.axios.get(`/products/?top_category=${key}`).then((res) => {
+    getCategoryProduct(key, flag) {
+      this.axios.get(`/products/?${key}`).then((res) => {
         this.total = res.data.total;
-        this.bread = res.data.list[0].category.name;
+        if (flag === 'cate') {
+          this.bread = res.data.list[0].category.name;
+        } else {
+          this.bread = res.data.list[0].brand.en_name;
+          this.brandInfo = res.data.list[0].brand;
+        }
         this.productList = res.data.list.map(item => {
-          // const temp = JSON.parse(item.goods[0]['params']);
           return {
             id: item.id,
             title: item.title,
             cover: item.pic,
             price: item.min_price,
-            // title: item.title,
-            // cover: JSON.parse(item.images)['images'][0],
-            // desc: item.desc.slice(0, 10),
-            // price: JSON.stringify(item.params) === '[]' ? 0 : item.params[0]['shop_price'],
           }
 
         });
@@ -460,9 +274,14 @@ export default {
       this.is_search = true;
       this.bread = flag.key;
     } else if (Object.prototype.hasOwnProperty.call(flag, 'categoryId') && flag.categoryId !== "") {
-      this.getCategoryProduct(flag.categoryId)
+      //top_category=${key}
+      this.getCategoryProduct(`top_category=${flag.categoryId}`, 'cate')
       this.is_category = true
       this.cid = flag.categoryId;
+    } else if (Object.prototype.hasOwnProperty.call(flag, 'brandId') && flag.categoryId !== "") {
+      this.getCategoryProduct(`brandId=${flag.brandId}`, 'brand')
+      this.is_brand = true
+      this.bid = flag.brandId;
     } else {
       // 只要这两个参数 否则隐藏面板
       this.errorFlag = false;
@@ -671,6 +490,33 @@ export default {
             }
           }
         }
+      }
+    }
+
+    .brand {
+      height: 120px;
+      margin-bottom: 5px;
+      background-color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .left {
+        height: 100px;
+        width: 100px;
+        margin: 0 10px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
       }
     }
 

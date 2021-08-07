@@ -258,6 +258,9 @@ export default {
       return sum
     }
   },
+  created() {
+    document.title = '订单确认 - JapanHui';
+  },
   mounted() {
     var flag = this.$route.query.gid;
     if (flag) {
