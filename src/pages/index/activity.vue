@@ -1,23 +1,26 @@
 <template>
   <div class="activity">
+    <!--    <div style=" background: url('https://kaola-haitao.oss.kaolacdn.com/d68e5036-44f9-4bf9-9bdd-218f89193dbdT19010111617_1920_506.jpg') no-repeat center;-->
+    <!--    height: 400px;"></div>-->
+    <div :style="'background: url('+productList.pic +') no-repeat center;'+'height: 400px;'"></div>
     <!--    <img src="https://kaola-haitao.oss.kaolacdn.com/d68e5036-44f9-4bf9-9bdd-218f89193dbdT19010111617_1920_506.jpg" alt="">-->
-    <div class="ad">
+    <!--    <div :style="background: url() no-repeat center; height: 400px;">-->
 
-    </div>
+    <!--    </div>-->
     <div class="container">
       <div class="desc">
-        <h2>编辑推荐</h2>
+        <h2>{{ productList.name }}</h2>
       </div>
       <div class="good-list">
         <div class="new-list">
-          <div class="shop-item" v-for="( product, idx) in productList" :key="idx">
+          <div class="shop-item" v-for="( product, idx) in productList.product" :key="idx">
             <span class="flag" v-if="product.is_new">新品</span>
             <div class="item-img">
-              <a :href="'/product/'+product.id" target="_blank"><img v-lazy="product.cover" :alt="product.title"></a>
+              <a :href="'/product/'+product.id" target="_blank"><img v-lazy="product.pic" :alt="product.title"></a>
             </div>
             <div class="item-info">
               <h3 class="title">{{ product.title.slice(0, 35) }}<span v-if="product.title.length > 38">...</span></h3>
-              <p class="price">{{ product.price }}元</p>
+              <p class="price">{{ product.min_price }}元</p>
             </div>
           </div>
 
@@ -37,34 +40,29 @@ export default {
     }
   },
   methods: {
-    getCategoryProduct(key) {
-      this.axios.get(`/products/?top_category=${key}`).then((res) => {
-        this.total = res.data.total;
-        this.productList = res.data.list.map(item => {
-          // const temp = JSON.parse(item.goods[0]['params']);
-          return {
-            id: item.id,
-            title: item.title,
-            cover: item.pic,
-            price: item.min_price,
-            // title: item.title,
-            // cover: JSON.parse(item.images)['images'][0],
-            // desc: item.desc.slice(0, 10),
-            // price: JSON.stringify(item.params) === '[]' ? 0 : item.params[0]['shop_price'],
-          }
+    getCategoryProduct(id) {
+      this.axios.get(`/managements/ad/${id}/`).then((res) => {
+        let item = res.data
 
-        });
+        this.productList = {
+          id: item.id,
+          name: item.name,
+          product: item.product,
+          pic: item.pic,
+        }
+
       })
     },
   },
   mounted() {
-    this.getCategoryProduct(2)
+    this.getCategoryProduct(this.$route.params.id)
   }
 }
 </script>
 
 <style lang="scss">
 .activity {
+  margin-top: 5px;
   //background-color: #f5f5f5;
   .ad {
     background: url('https://kaola-haitao.oss.kaolacdn.com/d68e5036-44f9-4bf9-9bdd-218f89193dbdT19010111617_1920_506.jpg') no-repeat center;
@@ -76,13 +74,15 @@ export default {
   .container {
     margin: 0 auto;
     width: 1190px;
-    .desc{
+
+    .desc {
       margin-top: 10px;
       background-color: #80c58a;
       height: 50px;
       text-align: center;
       line-height: 50px;
     }
+
     .good-list {
       text-align: center;
       padding: 5px 0 30px 0;

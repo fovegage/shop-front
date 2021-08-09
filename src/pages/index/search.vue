@@ -502,8 +502,9 @@ export default {
       justify-content: flex-start;
 
       .left {
-        height: 100px;
-        width: 100px;
+        border-radius: 20px;
+        height: 80px;
+        width: 80px;
         margin: 0 10px;
 
         img {

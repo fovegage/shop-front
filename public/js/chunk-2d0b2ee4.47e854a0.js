@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b2ee4"],{"25e0":function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div")},c=[],u={name:"rate",created:function(){document.title="订单评价 - JapanHui"}},i=u,r=t("4ac2"),o=Object(r["a"])(i,a,c,!1,null,"0bb37534",null);n["default"]=o.exports}}]);
+//# sourceMappingURL=chunk-2d0b2ee4.47e854a0.js.map
