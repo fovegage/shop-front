@@ -39,6 +39,9 @@ export default {
       productList: {}
     }
   },
+  created() {
+    document.title = this.productList.name + ' - JapanHui'
+  },
   methods: {
     getCategoryProduct(id) {
       this.axios.get(`/managements/ad/${id}/`).then((res) => {
