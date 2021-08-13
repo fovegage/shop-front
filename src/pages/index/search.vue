@@ -37,7 +37,7 @@
               <a :href="'/product/'+product.id" target="_blank"><img v-lazy="product.cover" :alt="product.title"></a>
             </div>
             <div class="item-info">
-              <h3 class="title">{{ product.title }}<span v-if="product.title.length > 38">...</span></h3>
+              <h3 class="title">{{ product.title.slice(0, 35) }}<span v-if="product.title.length > 38">...</span></h3>
               <p class="price">{{ product.price }}元</p>
             </div>
           </div>

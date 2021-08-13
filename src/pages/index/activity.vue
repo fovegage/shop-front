@@ -36,7 +36,7 @@ export default {
   name: "activity",
   data() {
     return {
-      productList: Array
+      productList: {}
     }
   },
   methods: {
@@ -44,12 +44,16 @@ export default {
       this.axios.get(`/managements/ad/${id}/`).then((res) => {
         let item = res.data
 
+        // console.log(item)
+
         this.productList = {
           id: item.id,
           name: item.name,
           product: item.product,
           pic: item.pic,
         }
+
+        // console.log(this.productList)
 
       })
     },
