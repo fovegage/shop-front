@@ -1,77 +1,54 @@
-## 记录
-- 部署  https://blog.csdn.net/AnNanDu/article/details/105215592
-  
+<div align="center">
 
--  js获取对象的key
-- https://blog.csdn.net/qq_37746973/article/details/80297150
+## 基于Vue开发的在线购物商城前端页面
 
-//    "eslint": "^6.7.2", // element-ui 按需加载问题 // https://www.jianshu.com/p/e64004e7ca6a
+**大道至简，组件化封装，美观大方实用的在线商超网站**
 
-- 修改小图标和标题 -https://www.cnblogs.com/xiaoxiaomini/p/13206249.html
+</div>
 
-- js正则判断手机号 -https://www.cnblogs.com/lst619247/p/9289694.html
+<br>
 
-https://www.jianshu.com/p/4847b9e3a2c6
+### 线上DEMO
 
-- watch方法 看是否用于购物车
+- 前端商城：[http://www.japanhui.com](http://www.japanhui.com)
 
-- vue传递参数 query get 用path || params post 用name
-- 库存不足产品
-  http://127.0.0.1:8080/product/679
+### 正在开发
 
--js 数组对象过滤
+- [ ] 找回密码功能
+- [ ] 商品售后功能
+- [ ] 用户签到功能
 
-- https://www.cnblogs.com/Qooo/p/14097176.html
-- js数组求和
-    - https://blog.csdn.net/weixin_40687883/article/details/85248195
-- js字符串拼接
-- https://blog.csdn.net/weixin_39612961/article/details/83150051
-## 说明
+### 商城界面
+![](https://oscimg.oschina.net/oscnet/up-d70622d405090fe1e300c786ac492c1ab47.png)
+![](https://oscimg.oschina.net/oscnet/up-e5c50f7854592b3943d2ca62907d1ef237d.png)
+![](https://oscimg.oschina.net/oscnet/up-51cea4f0f3bd189e69d7e7f484d8030d9de.png)
+![](https://oscimg.oschina.net/oscnet/up-7545319b130554b1a40c23cc6e5de219c6a.png)
+![](https://oscimg.oschina.net/oscnet/up-b5762afdf08a0a854bed8d59852256bc30c.png)
 
-- js 属性问题 需要先声名一下
-  https://blog.csdn.net/qq_35393869/article/details/100123459
-- js获取数组最后一个元素 -https://www.cnblogs.com/sirdong/p/11746200.html
-- js转字符串
-  https://blog.csdn.net/yellowmushroom/article/details/80252513
+### 所用技术
 
--声名数组 -https://blog.csdn.net/qq_39125445/article/details/88218907
+- Vue 2.x
+- Vuex
+- Vue Router
+- Element UI
+- ES6
+- webpack
+- axios
+- Node.js
 
-- user 用户管理摸板
-- my 用户下单
-- home 前端主页面
+### 本地运行
 
-// 动态active 根据路由
+```
+npm install
+npm run serve
+```
 
-- https://blog.csdn.net/sxjit/article/details/105179075
 
-//js filter
+## 在线部署
 
-- https://blog.csdn.net/qq_33459369/article/details/81987883
+```
+npm install
+npm run build
+```
 
-// axios 返回状态码
 
-- https://blog.csdn.net/jw19950424/article/details/108744268
-
-//cors跨域问题
-
-- https://www.huaweicloud.com/articles/d9585f5b5baa64aea2f48602f1cb1f16.html
-
-// 父子组件传递值
-
-- https://blog.csdn.net/weixin_43989275/article/details/89175479
-
-// js判断字典key
-
-- https://blog.csdn.net/qq_36727756/article/details/105464902
-
-// 回车事件
-
-- https://www.cnblogs.com/fkcqwq/p/13035976.html
-
-// 404拦截
-
--https://www.cnblogs.com/m1754171640/p/13753572.html
-
-// cors和jwt
-
-- https://blog.csdn.net/weixin_38405253/article/details/108313594

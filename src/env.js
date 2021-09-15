@@ -5,13 +5,13 @@ switch (process.env.NODE_ENV) {
         baseURL = '//127.0.0.1:8000';
         break;
     case 'prev':
-        baseURL = '//101.33.32.225:8002';
+        baseURL = '//japan.myinterface.cn';
         break;
     case 'prod':
-        baseURL = '//101.33.32.225:8002';
+        baseURL = '//japan.myinterface.cn';
         break;
     default:
-        baseURL = '//101.33.32.225:8002';
+        baseURL = '//japan.myinterface.cn';
         break;
 }
 

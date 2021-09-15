@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0c8da9"],{"573d":function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div")},c=[],u={name:"address",created:function(){document.title="地址管理 - JapanHui"}},d=u,i=t("4ac2"),r=Object(i["a"])(d,a,c,!1,null,"2131fa04",null);n["default"]=r.exports}}]);
-//# sourceMappingURL=chunk-2d0c8da9.a944f06f.js.map

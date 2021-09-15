@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d229091"],{dc73:function(n,e,t){"use strict";t.r(e);var c=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div")},a=[],u={name:"sign",created:function(){document.title="用户签到 - JapanHui"}},i=u,d=t("4ac2"),o=Object(d["a"])(i,c,a,!1,null,"1d58861c",null);e["default"]=o.exports}}]);
-//# sourceMappingURL=chunk-2d229091.5e6db054.js.map

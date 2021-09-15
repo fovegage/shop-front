@@ -7,6 +7,7 @@
     <!--    <div :style="background: url() no-repeat center; height: 400px;">-->
 
     <!--    </div>-->
+
     <div class="container">
       <div class="desc">
         <h2>{{ productList.name }}</h2>
@@ -40,7 +41,7 @@ export default {
     }
   },
   created() {
-    document.title = this.productList.name + ' - JapanHui'
+    document.title = '活动 - JapanHui'
   },
   methods: {
     getCategoryProduct(id) {
