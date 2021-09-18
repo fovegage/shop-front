@@ -17,6 +17,33 @@
         </div>
 
       </div>
+
+      <div class="show-brand">
+
+        <div class="left-brand">
+          <h3>品牌：</h3>
+        </div>
+        <div class="right-brand">
+          <div v-for="( product, idx) in setBrand(productList)" :key="idx" class="detail-brand">
+            <!--            {{ product.brand.zh_name }}-->
+            <a :href="'/search?categoryId='+product.brand.id">{{ product.brand.zh_name }}</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="show-brand">
+
+        <div class="left-brand">
+          <h3>分类：</h3>
+        </div>
+        <div class="right-brand">
+          <div v-for="( product, idx) in setProduct(productList)" :key="idx" class="detail-brand">
+            <a :href="'/search?categoryId='+product.category.id">{{ product.category.name }}</a>
+          </div>
+        </div>
+
+      </div>
+
       <div class="sort">
         <div class="left">
           <p :class="{'active':sortActive ==='default'}" @click="sortRes('default')">{{ status1 }}</p>
@@ -29,6 +56,8 @@
           <el-radio v-model="radio" label="3">仅看有货</el-radio>
         </div>
       </div>
+
+
       <div class="good-list">
         <div class="new-list">
           <div class="shop-item" v-for="( product, idx) in productList" :key="idx">
@@ -123,13 +152,26 @@ export default {
     document.title = '搜索 - JapanHui'
   },
   methods: {
+
+    setBrand(val) {
+
+      return val.filter(function (item, index, self) {
+        return self.findIndex(el => el.brand.en_name == item.brand.en_name) === index
+      })
+    },
+
+    setProduct(val) {
+      return val.filter(function (item, index, self) {
+        return self.findIndex(el => el.category.name == item.category.name) === index
+      })
+    },
     requestProduct(val) {
       var params = {
         top_category: this.cid,
         pageNum: 1,
         ordering: val
       }
-      console.log(this.is_search, this.is_category)
+      // console.log(this.is_search, this.is_category)
       if (this.is_search) {
         delete params['top_category']
         params['search'] = this.search_key
@@ -142,6 +184,8 @@ export default {
             id: item.id,
             title: item.title,
             cover: item.pic,
+            brand: item.brand,
+            category: item.category,
             price: item.min_price,
           }
         });
@@ -205,7 +249,7 @@ export default {
         top_category: this.cid,
         pageNum: page
       }
-      console.log(this.is_search, this.is_category)
+      // console.log(this.is_search, this.is_category)
       if (this.is_search) {
         delete params['top_category']
         params['search'] = this.search_key
@@ -218,6 +262,8 @@ export default {
           return {
             id: item.id,
             title: item.title,
+            brand: item.brand,
+            category: item.category,
             cover: item.pic,
             price: item.min_price,
           }
@@ -236,6 +282,8 @@ export default {
           return {
             id: item.id,
             title: item.title,
+            brand: item.brand,
+            category: item.category,
             cover: item.pic,
             price: item.min_price,
           }
@@ -255,6 +303,8 @@ export default {
           return {
             id: item.id,
             title: item.title,
+            brand: item.brand,
+            category: item.category,
             cover: item.pic,
             price: item.min_price,
           }
@@ -518,6 +568,44 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+      }
+    }
+
+    .show-brand {
+      display: flex;
+      //min-width: 100px;
+      color: #333333;
+
+      .left-brand {
+        width: 60px;
+        min-height: 50px;
+
+      }
+
+      .right-brand {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        .detail-brand {
+          margin-right: 10px;
+          //margin-top: 5px;
+          margin-bottom: 10px;
+          min-width: 50px;
+          line-height: 30px;
+          height: 30px;
+          text-align: center;
+          background-color: #FFFFFF;
+          padding: 0 10px;
+
+          a {
+            color: #333333;
+          }
+
+          a:hover {
+            color: #ff6600;;
+          }
+        }
       }
     }
 
