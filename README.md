@@ -10,7 +10,7 @@
 
 ### 线上DEMO
 
-- 前端商城：[http://www.japanhui.com](http://www.japanhui.com)
+- 前端商城：[https://fovegage.github.io/shop-front/](https://fovegage.github.io/shop-front/)
 
 ### 正在开发
 
