@@ -1,6 +1,6 @@
 module.exports = {
     // http://127.0.0.1:8082/api
-    outputDir: './public',
+    outputDir: './dist',
     devServer: {
         host: '127.0.0.1',
         port: 8080,
