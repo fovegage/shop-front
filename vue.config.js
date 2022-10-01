@@ -1,6 +1,6 @@
 module.exports = {
     // http://127.0.0.1:8082/api
-    // outputDir: './dist',
+    outputDir: './dist',
     publicPath: '/shop-front/',
     devServer: {
         host: '127.0.0.1',
